@@ -1,0 +1,100 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    background: black;
+    font-size: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: aliceblue;
+}
+.wrapper {
+    margin: 2rem auto;
+    width: 50vw;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: auto 1rem auto;
+    grid-template-areas: 
+        'image image'
+        '. .'
+        'text selector';
+    align-items: center;
+}
+.mem__img {
+    opacity: 0;
+    transition: all 0.7s;
+    border-radius: 15px;
+    grid-area: image;
+    justify-self: center;
+    box-shadow: 4px 4px 8px 0px rgba(176, 191, 202, 0.36);
+}
+.mem__text {
+    opacity: 0;
+    grid-area: text;
+    font-size: 1.2rem;
+    transition: all 0.7s;
+    animation: mem__text_appear 1s;
+}
+@keyframes mem__text_appear {
+    from {margin-left: -100%;}
+    to {margin-left: 0%;}
+} 
+
+#mem1:checked ~ .mem__item_1,
+#mem2:checked ~ .mem__item_2,
+#mem3:checked ~ .mem__item_3,
+#mem4:checked ~ .mem__item_4 {
+    opacity: 1;
+    animation: mem__text_appear 1s;
+}
+#mem1:checked ~ .mem__selector>label:nth-child(1),
+#mem2:checked ~ .mem__selector>label:nth-child(2),
+#mem3:checked ~ .mem__selector>label:nth-child(3),
+#mem4:checked ~ .mem__selector>label:nth-child(4) {
+    border: 0.15rem solid #71abfe;
+    background: #000000;
+}
+.mem__selector {
+    grid-area: selector;
+    justify-self: end;
+}
+.mem__selector_item {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 1rem;
+    background: #71abfe;
+}
+.mem__selector_item:hover {
+    cursor: pointer;
+    background: #ffffff;
+}
+.mem__selector_item_hidden {
+    display: none;
+}
+
+@media screen and (max-width: 640px) {
+    .wrapper {
+        margin: 1rem auto;
+        width: 80vw;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1rem auto 1rem auto;
+        grid-template-areas: 
+            'image'
+            '.'
+            'selector'
+            '.'
+            'text';
+    }
+    .mem__img {
+        width: 100%;
+        border-radius: 10px;
+    }
+    .mem__text {
+        font-size: 1.1rem;
+    }
+    .mem__selector {
+        justify-self: center;
+    }
+}
