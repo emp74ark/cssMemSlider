@@ -26,6 +26,8 @@ body {
     transition: all 0.7s;
     border-radius: 15px;
     grid-area: image;
+    width: max-content;
+    height: min-content;
     justify-self: center;
     box-shadow: 4px 4px 8px 0px rgba(176, 191, 202, 0.36);
 }
